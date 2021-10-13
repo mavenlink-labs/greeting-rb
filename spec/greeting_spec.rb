@@ -14,5 +14,9 @@ RSpec.describe Greeting do
     it 'can shout at a friend' do
       expect(Greeting.greet('BOB')).to eq "HELLO BOB!"
     end
+
+    it 'can greet with more then 1 name' do
+      expect(Greeting.greet(['Jill', 'Jack'])).to eq "Hello, Jill and Jack."
+    end
   end
 end
