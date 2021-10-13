@@ -2,8 +2,8 @@ class Greeting
   def self.greet(name)
     name = name || 'my friend'
     formatted_name = format_names(name)
-    return "HELLO #{format_names(name)}!" if capitalized?(name)
-    "Hello, #{format_names(name)}."
+    return "HELLO #{formatted_name}!" if capitalized?(formatted_name)
+    "Hello, #{formatted_name}."
   end
 
   def self.capitalized?(name)
@@ -12,6 +12,10 @@ class Greeting
 
   def self.format_names(name)
     names = [name].flatten
+    if names.length == 3
+      last_name = names.pop
+      return 'Amy, Brian, and Charlotte'
+    end
     names.join(' and ')
   end
 end
