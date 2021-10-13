@@ -22,5 +22,9 @@ RSpec.describe Greeting do
     it 'can greet more than 2 names' do
       expect(Greeting.greet(['Amy', 'Brian', 'Charlotte'])).to eq "Hello, Amy, Brian, and Charlotte."
     end
+
+    it 'can greet more than 2 names with shouting' do
+      expect(Greeting.greet(["Amy", "BRIAN", "Charlotte"])).to eq "Hello, Amy and Charlotte. AND HELLO BRIAN!"
+    end
   end
 end

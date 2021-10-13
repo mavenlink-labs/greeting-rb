@@ -12,9 +12,9 @@ class Greeting
 
   def self.format_names(name)
     names = [name].flatten
-    if names.length == 3
+    if names.length > 2
       last_name = names.pop
-      return 'Amy, Brian, and Charlotte'
+      return names.join(', ') + ', and ' + last_name
     end
     names.join(' and ')
   end
