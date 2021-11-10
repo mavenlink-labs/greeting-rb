@@ -10,5 +10,9 @@ RSpec.describe Greeting do
     it "can greet a nil friend" do
       expect(Greeting.greet(nil)).to eq "Hello, my friend."
     end
+
+    it "can shout" do
+      expect(Greeting.greet("JERRY")).to eq "HELLO JERRY!"
+    end
   end
 end

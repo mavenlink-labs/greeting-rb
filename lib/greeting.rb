@@ -1,5 +1,7 @@
 class Greeting
   def self.greet(name)
+    lowercase_names, uppercase_names = [name].partition{ |n| n.upcase != n }
+
     "Hello, #{name}."
   end
 end
