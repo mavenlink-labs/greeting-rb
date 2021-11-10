@@ -18,5 +18,9 @@ RSpec.describe Greeting do
     it "can greet many people" do
       expect(Greeting.greet(["Jill", "Jane"])).to eq "Hello, Jill and Jane."
     end
+
+    it "can greet many more people" do
+      expect(Greeting.greet(["Amy", "Brian", "Charlotte"])).to eq "Hello, Amy, Brian, and Charlotte."
+    end
   end
 end
