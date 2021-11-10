@@ -7,6 +7,20 @@ class Greeting
   end
 end
 
+class UppercaseGreeting
+  def initialize(names)
+    @names = names
+  end
+
+  def to_s
+
+  end
+end
+
+class LowercaseGreeting
+
+end
+
 class NilClass
   def to_s
     "my friend"
