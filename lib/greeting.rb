@@ -13,12 +13,18 @@ class UppercaseGreeting
   end
 
   def to_s
-
+    @names.each { |u_name| return "HELLO #{u_name}!" }
   end
 end
 
 class LowercaseGreeting
+  def initialize(names)
+    @names = names
+  end
 
+  def to_s
+    @names.each { |l_name| return "Hello, #{@names.join(' and ')}." }
+  end
 end
 
 class NilClass
