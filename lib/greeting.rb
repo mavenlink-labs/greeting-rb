@@ -2,39 +2,40 @@ class Greeting
   def self.greet(name)
     uppercase_names, lowercase_names = [name].flatten.partition{ |n| n.upcase == n }
 
-    lowercase_names = LowercaseNames.new(lowercase_names)
-
-    if (lowercase_names.present?)
-      lowercase_names.greeting
+    if !lowercase_names.empty?
+      NAMES_CLASSES[lowercase_names.length].new(lowercase_names).greeting
     else
       "HELLO #{uppercase_names.first}!"
     end
   end
 end
 
-class LowercaseNames
+class SimpleNames
   def initialize(names)
     @names = names
   end
 
-  def names
-    @names
+  def greeting
+    "Hello, #{@names.join(" and ")}."
+  end
+end
+
+class CompoundNames
+  def initialize(names)
+    @names = names
   end
 
   def greeting
-    if @names.length <= 2
-      "Hello, #{@names.join(" and ")}."
-    else
-      last_name = @names.pop
+    last_name = @names.pop
 
-      "Hello, #{@names.join(', ')}, and #{last_name}."
-    end
-  end
-
-  def present?
-    !@names.empty?
+    "Hello, #{@names.join(', ')}, and #{last_name}."
   end
 end
+
+NAMES_CLASSES = Hash.new(CompoundNames)
+NAMES_CLASSES[0] = SimpleNames
+NAMES_CLASSES[1] = SimpleNames
+NAMES_CLASSES[2] = SimpleNames
 
 class NilClass
   def to_s
