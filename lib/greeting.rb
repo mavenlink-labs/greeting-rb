@@ -2,16 +2,10 @@ class Greeting
   def self.greet(name)
     uppercase_names, lowercase_names = [name].flatten.partition{ |n| n.upcase == n }
 
-    lowercase_names = LowercaseNames.new(lowercase_names).names
+    lowercase_names = LowercaseNames.new(lowercase_names)
 
-    if (!lowercase_names.empty?)
-      if lowercase_names.length <= 2
-        "Hello, #{lowercase_names.join(" and ")}."
-      else
-        last_name = lowercase_names.pop
-
-        "Hello, #{lowercase_names.join(', ')}, and #{last_name}."
-      end
+    if (lowercase_names.present?)
+      lowercase_names.greeting
     else
       "HELLO #{uppercase_names.first}!"
     end
@@ -25,6 +19,20 @@ class LowercaseNames
 
   def names
     @names
+  end
+
+  def greeting
+    if @names.length <= 2
+      "Hello, #{@names.join(" and ")}."
+    else
+      last_name = @names.pop
+
+      "Hello, #{@names.join(', ')}, and #{last_name}."
+    end
+  end
+
+  def present?
+    !@names.empty?
   end
 end
 
