@@ -4,8 +4,14 @@ class Greeting
 
     # lowercase_names.each { |l_name| return "Hello, #{lowercase_names.join(' and ')}." }
     # uppercase_names.each { |u_name| return "HELLO #{u_name}!" }
-    if(!lowercase_names.empty?)
-      "Hello, #{lowercase_names.join(' and ')}."
+    if (!lowercase_names.empty?)
+      if (lowercase_names.length == 1)
+          "Hello, " + lowercase_names[0]
+      end
+
+      last_name = lowercase_names.pop
+
+      "Hello, #{lowercase_names.join(', ')} and " + last_name + "."
     else
       "HELLO #{uppercase_names.first}!"
     end
