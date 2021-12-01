@@ -2,39 +2,29 @@ class Greeting
   def self.greet(name)
     uppercase_names, lowercase_names = [name].flatten.partition{ |n| n.upcase == n }
 
-    # lowercase_names.each { |l_name| return "Hello, #{lowercase_names.join(' and ')}." }
-    # uppercase_names.each { |u_name| return "HELLO #{u_name}!" }
+    lowercase_names = LowercaseNames.new(lowercase_names).names
+
     if (!lowercase_names.empty?)
-      if (lowercase_names.length == 1)
-          "Hello, " + lowercase_names[0]
+      if lowercase_names.length <= 2
+        "Hello, #{lowercase_names.join(" and ")}."
+      else
+        last_name = lowercase_names.pop
+
+        "Hello, #{lowercase_names.join(', ')}, and #{last_name}."
       end
-
-      last_name = lowercase_names.pop
-
-      "Hello, #{lowercase_names.join(', ')} and " + last_name + "."
     else
       "HELLO #{uppercase_names.first}!"
     end
   end
 end
 
-class UppercaseGreeting
+class LowercaseNames
   def initialize(names)
     @names = names
   end
 
-  def to_s
-    @names.each { |u_name| return "HELLO #{u_name}!" }
-  end
-end
-
-class LowercaseGreeting
-  def initialize(names)
-    @names = names
-  end
-
-  def to_s
-    @names.each { |l_name| return "Hello, #{@names.join(' and ')}." }
+  def names
+    @names
   end
 end
 
