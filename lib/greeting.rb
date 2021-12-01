@@ -2,11 +2,9 @@ class Greeting
   def self.greet(name)
     uppercase_names, lowercase_names = [name].flatten.partition{ |n| n.upcase == n }
 
-    if !lowercase_names.empty?
-      NAMES_CLASSES[lowercase_names.length].new(lowercase_names).greeting
-    else
-      "HELLO #{uppercase_names.first}!"
-    end
+
+    lowercase_names.each { return NAMES_CLASSES[lowercase_names.length].new(lowercase_names).greeting }
+    "HELLO #{uppercase_names.first}!"
   end
 end
 
